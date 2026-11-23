@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --uf-blue: #3563f9;
+  --uf-ink: #070b14;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', 'Manrope', 'Plus Jakarta Sans', system-ui, sans-serif;
+  background: #ffffff;
+  color: #0b1220;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Prevent accidental horizontal overflow */
+html,
+body,
+#root {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+@layer components {
+  .container-uf {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold
+      transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-ultrablue-500
+      focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .btn-primary {
+    @apply btn bg-ultrablue-600 text-white shadow-card hover:bg-ultrablue-700 hover:shadow-cardLg
+      active:scale-[0.98];
+  }
+
+  .btn-dark {
+    @apply btn bg-ink-950 text-white hover:bg-ink-800 active:scale-[0.98];
+  }
+
+  .btn-outline {
+    @apply btn border border-ink-700/15 bg-white text-ink-900 hover:border-ink-900/30 hover:bg-sand-50;
+  }
+
+  .btn-ghost-light {
+    @apply btn border border-white/25 bg-white/5 text-white backdrop-blur hover:bg-white/10;
+  }
+
+  .field {
+    @apply w-full rounded-xl border border-ink-700/15 bg-white px-4 py-3 text-sm text-ink-900
+      placeholder:text-ink-600/45 transition focus:border-ultrablue-500 focus:outline-none
+      focus:ring-4 focus:ring-ultrablue-500/15;
+  }
+
+  .field-error {
+    @apply border-red-500/70 focus:border-red-500 focus:ring-red-500/15;
+  }
+
+  .card {
+    @apply rounded-2xl border border-ink-700/10 bg-white shadow-card;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-ultrablue-600;
+  }
+
+  .section-title {
+    @apply font-archivo text-3xl font-bold leading-tight tracking-tight text-ink-950 sm:text-4xl;
+  }
+}
+
+/* Custom scrollbar (desktop) */
+@media (pointer: fine) {
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f1f5f9;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #c3cede;
+    border-radius: 999px;
+    border: 2px solid #f1f5f9;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #9fb0c7;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
